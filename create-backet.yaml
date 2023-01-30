@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  BacketName:
+    Type: String
+Resources:
+  MyS3Bucket: # zipファイルをアップロードするためのS3バケット
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BacketName
