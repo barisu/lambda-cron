@@ -3,15 +3,16 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   BacketName:
     Type: String
-  ObjName:
+  FunctionName:
     Type: String
 Resources:
   MyFunction:
     Type: AWS::Lambda::Function
     Properties:
+      FunctionName: !Ref FunctionName
       Code:
         S3Bucket: !Ref BacketName
-        S3Key: !Ref ObjName
+        S3Key: build.zip
       Handler: index.handler
       Role: !GetAtt MyFunctionRole.Arn
       Runtime: nodejs16.x
@@ -38,6 +39,10 @@ Resources:
             - logs:CreateLogStream
             - logs:PutLogEvents
             Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*
+          - Effect: Allow
+            Action: 
+            - s3:GetObject
+            Resource: !Sub 'arn:aws:s3:::${BacketName}/*'
   MyEventRule:
     Type: AWS::Events::Rule
     Properties:

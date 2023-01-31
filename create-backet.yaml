@@ -8,3 +8,9 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref BacketName
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
