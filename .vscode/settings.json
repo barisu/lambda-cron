@@ -1,7 +1,7 @@
 {
   "yaml.schemas": {
     "https://d33vqc0rt9ld30.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json": [
-      "template.yaml"
+      "*.yaml"
     ]
   },
   "yaml.customTags": [
